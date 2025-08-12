@@ -1,0 +1,14 @@
+#learn-intro > p {
+  font-weight: lighter;
+  text-align: justify;
+  margin-bottom: 20px;
+
+  .keyword {
+    font-weight: normal;
+  }
+}
+
+#operators-list {
+  display: flex;
+  flex-direction: column;
+}

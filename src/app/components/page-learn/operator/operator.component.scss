@@ -1,0 +1,84 @@
+$color-creation: #22930e;
+$color-transformation: #008cc1;
+$color-filtering: #dc9f10;
+$color-combination: #8a18e8;
+$color-utility: #552e16;
+$color-error: #8c2828;
+
+$transparentize-factor: 0.8;
+
+.operator-tile {
+  width: auto;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+
+  &.category-creation {
+    background-color: transparentize($color-creation, $transparentize-factor);
+  }
+  &.category-transformation {
+    background-color: transparentize($color-transformation, $transparentize-factor);
+  }
+  &.category-filtering {
+    background-color: transparentize($color-filtering, $transparentize-factor);
+  }
+  &.category-combination {
+    background-color: transparentize($color-combination, $transparentize-factor);
+  }
+  &.category-utility {
+    background-color: transparentize($color-utility, $transparentize-factor);
+  }
+  &.category-error {
+    background-color: transparentize($color-error, $transparentize-factor);
+  }
+
+  .operator-name {
+    font-weight: normal;
+    font-family: "Consolas", "Courier New", monospace;
+    margin-right: 0.5em;
+  }
+
+  .operator-category {
+    transform: scale(0.9);
+    opacity: 0.5;
+    transition: opacity 0.25s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .operator-description {
+    font-weight: lighter;
+  }
+
+  .operator-example {
+    font-size: smaller;
+    font-family: "Consolas", "Courier New", monospace;
+    margin-top: -10px;
+
+    &::before {
+      content: "Example:";
+      font-style: italic;
+      font-weight: lighter;
+      margin-right: 0.5em;
+    }
+
+    .copy-icon {
+      margin-left: 0.5em;
+      vertical-align: middle;
+      opacity: 0;
+      cursor: pointer;
+
+      .mat-icon {
+        margin: auto;
+        transform: scale(0.7);
+      }
+
+    }
+
+    &:hover .copy-icon {
+      opacity: 0.5;
+    }
+  }
+}

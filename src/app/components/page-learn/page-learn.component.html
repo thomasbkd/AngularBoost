@@ -1,0 +1,34 @@
+<h1>Introduction to <span class="techno-title">{{ title }}</span></h1>
+<div id="learn-intro">
+  <p>
+    <span class="techno-title keyword">RxJS</span> (<span class="keyword">R</span>eactive
+    E<span class="keyword">x</span>tensions for <span class="keyword">J</span>ava<span class="keyword">S</span>cript)
+    is a powerful library for reactive programming using observables.
+    It allows developers to work with asynchronous data streams such as events, HTTP requests, or user inputs in a
+    declarative and composable way. Instead of manually managing callbacks or promises, RxJS provides a rich set of
+    operators to transform, filter, combine, and control the flow of data over time.
+  </p>
+
+  <p>
+    At the heart of RxJS is the <span class="keyword">Observable</span>, which represents a stream of data that can be
+    observed and reacted to. Observables can emit multiple values over time, and subscribers can respond to these
+    emissions using functions like <i>next</i>, <i>error</i>, and <i>complete</i>.
+    RxJS also includes Subjects, which act as both observables and observers, making them useful for multicasting and
+    event handling.
+  </p>
+
+  <p>
+    RxJS is deeply integrated into Angular, especially in areas like HTTP requests, form controls, and component
+    communication. By mastering RxJS, developers can write cleaner, more maintainable code that handles complex
+    asynchronous logic with ease.
+  </p>
+</div>
+
+<h2>Some examples of theses operators</h2>
+
+<div id="operators-list">
+  @for (op of operators; track op.id) {
+    <app-operator [operator]="op"></app-operator>
+  }
+</div>
+

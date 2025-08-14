@@ -1,6 +1,16 @@
-<div class="operator-tile" [ngClass]="'category-'+operator()?.category | lowercase">
-  <span class="operator-name">{{ operator()?.name }}</span>
-  <mat-chip class="operator-category">{{ operator()?.category}}</mat-chip>
-  <p class="operator-description">{{ operator()?.description }}</p>
-  <p class="operator-example">{{ operator()?.codeExample }}<span class="copy-icon" (click)="toClipboard(operator()?.codeExample)"><mat-icon>content_copy</mat-icon></span></p>
+<div class="operator-tile" [ngClass]="'category-'+operator.category | lowercase">
+  <div class="left">
+    <div class="title">
+      <span class="operator-name">{{ operator.name }}</span>
+      <mat-chip class="operator-category">{{ operator.category}}</mat-chip>
+    </div>
+    <div class="operator-description">{{ operator.description }}</div>
+    <div class="operator-example">{{ operator.codeExample }}<span class="copy-icon" (click)="toClipboard(operator.codeExample)"><mat-icon>content_copy</mat-icon></span></div>
+  </div>
+  <div class="right">
+    <span class="operator-like-count">
+      {{ operatorsServices.getLikeCount(operator.id) }}
+    </span>
+    <mat-icon class="operator-like-icon" (click)="likeSection()">thumb_up</mat-icon>
+  </div>
 </div>

@@ -10,5 +10,46 @@
 
 #operators-list {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 }
+
+#examples-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  #search-bar {
+    width: 500px;
+    height: 100%;
+    font-size: smaller;
+  }
+}
+
+.like-chip {
+  font-size: smaller;
+  color: #c2185b;
+
+  .like-chip-icon {
+    margin-bottom: -0.2em;
+    transform: scale(0.8);
+  }
+
+  .like-id {
+    font-weight: normal;
+
+    &:before {
+      content: "#";
+    }
+    &:after {
+      content: " ";
+    }
+  }
+
+  .like-time {
+    font-weight: lighter;
+    opacity: 0.5;
+  }
+}
+

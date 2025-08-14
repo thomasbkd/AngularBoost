@@ -1,9 +1,17 @@
 <mat-toolbar id="toolbar">
-  <span id="home-title" class="techno-title" (click)="goToHome()">RxJS</span>
-  <div id="toolbar-links">
-    <a [ngClass]="{'active': router.url.startsWith('/learn')}" (click)="goToLearn()">Learn</a>
-    <a [ngClass]="{'active': router.url.startsWith('/test')}" (click)="goToTest()">Test</a>
+  <div class="left">
+    <span id="home-title" class="techno-title" (click)="goToHome()">RxJS</span>
+    <div id="toolbar-links">
+      <a [ngClass]="{'active': router.url.startsWith('/learn')}" (click)="goToLearn()">Learn</a>
+      <a [ngClass]="{'active': router.url.startsWith('/test')}" (click)="goToTest()">Test</a>
+    </div>
   </div>
+  <div class="right">
+    <span class="total-likes">{{ operatorsService.getTotalLike() }}</span>
+    <mat-icon class="like-icon">thumb_up</mat-icon>
+  </div>
+
+
 </mat-toolbar>
 
 <div id="page-content">

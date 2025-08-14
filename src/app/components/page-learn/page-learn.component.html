@@ -24,11 +24,44 @@
   </p>
 </div>
 
-<h2>Some examples of theses operators</h2>
+<div id="examples-title">
+  <h2>Some examples of theses operators</h2>
+  <mat-form-field id="search-bar">
+    <mat-label>Search an operator...</mat-label>
+    <input matInput type="text" [(ngModel)]="search"/>
+    @if (search()) {
+      <button matSuffix mat-icon-button (click)="search.set('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+</div>
 
 <div id="operators-list">
-  @for (op of operators; track op.id) {
-    <app-operator [operator]="op"></app-operator>
+  @if (operators && operators.length > 0) {
+    @for (op of operators; track op.id) {
+      <app-operator [operator]="op" (likedSection)="addLike($event)"></app-operator>
+    }
+  } @else {
+    <i>No operators found</i>
   }
+</div>
+<div>
+  <button mat-raised-button (click)="showLikes = !showLikes">
+    @if (showLikes) {
+      Hide new likes
+    } @else {
+      Show new likes
+    }
+  </button>
+  <div [ngStyle]="{'display': showLikes ? 'block' : 'none'}" id="observables-event">
+    <mat-chip-set>
+      <mat-chip *ngFor="let like of newLikes" class="like-chip">
+        <mat-icon class="like-chip-icon">thumb_up</mat-icon>
+        <span class="like-id">{{ like.id }}</span>
+        <span class="like-time"> at {{ like.timestamp | date:'HH:mm:ss' }}</span>
+      </mat-chip>
+    </mat-chip-set>
+  </div>
 </div>
 

@@ -13,6 +13,44 @@ $transparentize-factor: 0.8;
   margin-bottom: 20px;
   border-radius: 10px;
 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+
+  .left {
+    width: auto;
+    text-wrap: wrap;
+
+    .title {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .right {
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: end;
+    opacity: 0.4;
+    transition: opacity 0.3s ease-in-out;
+
+    .operator-like-count {
+      margin-right: 0.2em;
+      text-align: right;
+    }
+
+    .operator-like-icon {
+      cursor: pointer;
+    }
+  }
+
+  &:hover > .right {
+    opacity: 0.8;
+  }
+
   &.category-creation {
     background-color: transparentize($color-creation, $transparentize-factor);
   }
@@ -50,6 +88,7 @@ $transparentize-factor: 0.8;
 
   .operator-description {
     font-weight: lighter;
+    margin-bottom: 1em;
   }
 
   .operator-example {

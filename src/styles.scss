@@ -43,6 +43,7 @@ html, body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   background-color: $corp-color;
+  scrollbar-gutter: stable;
 }
 
 ::selection {
@@ -57,4 +58,3 @@ html, body {
     color: $techno-color;
   }
 }
-

@@ -11,8 +11,8 @@ Angular project developed to enhance my front-end development skills.
 - [x] Import Angular Material
 - [x] Document the learn page
 - [x] Create a dedicated section component: [Operator](src/app/components/page-learn/operator)
-- [ ] Add liking section feature
-- [ ] Display total likes in the toolbar
+- [x] Add liking section feature
+- [x] Display total likes in the toolbar
 - [ ] Initialize a form on the test page
 - [ ] Add validation to the form
 - [ ] Create a dedicated page for the test results

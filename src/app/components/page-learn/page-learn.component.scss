@@ -8,12 +8,6 @@
   }
 }
 
-#operators-list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
 #examples-title {
   display: flex;
   flex-direction: row;
@@ -27,29 +21,40 @@
   }
 }
 
-.like-chip {
-  font-size: smaller;
-  color: #c2185b;
+#new-likes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  .like-chip-icon {
-    margin-bottom: -0.2em;
-    transform: scale(0.8);
+  #show-likes-button {
+    margin-bottom: 10px;
   }
 
-  .like-id {
-    font-weight: normal;
+  .like-chip {
+    font-size: smaller;
+    color: #c2185b;
 
-    &:before {
-      content: "#";
+    .like-chip-icon {
+      margin-bottom: -0.2em;
+      transform: scale(0.8);
     }
-    &:after {
-      content: " ";
-    }
-  }
 
-  .like-time {
-    font-weight: lighter;
-    opacity: 0.5;
+    .like-id {
+      font-weight: normal;
+
+      &:before {
+        content: "#";
+      }
+
+      &:after {
+        content: " ";
+      }
+    }
+
+    .like-time {
+      font-weight: lighter;
+      opacity: 0.5;
+    }
   }
 }
-

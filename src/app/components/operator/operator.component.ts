@@ -1,9 +1,9 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
-import {Operator} from '../../../models/operator.model';
+import {Operator} from '../../models/operator.model';
 import {MatChip} from '@angular/material/chips';
 import {AsyncPipe, LowerCasePipe, NgClass} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
-import {OperatorsService} from '../../../services/operators.service';
+import {OperatorsService} from '../../services/operators.service';
 import {Observable} from 'rxjs';
 
 @Component({

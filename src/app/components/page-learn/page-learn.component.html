@@ -26,7 +26,7 @@
 
 <div id="examples-title">
   <h2>Some examples of theses operators</h2>
-  <mat-form-field id="search-bar">
+  <mat-form-field id="search-bar" appearance="outline">
     <mat-label>Search an operator...</mat-label>
     <input matInput type="text" [(ngModel)]="search"/>
     @if (search()) {
@@ -46,15 +46,15 @@
     <i>No operators found</i>
   }
 </div>
-<div>
-  <button mat-raised-button (click)="showLikes = !showLikes">
+<div id="new-likes">
+  <button mat-raised-button (click)="showLikes = !showLikes" id="show-likes-button">
     @if (showLikes) {
       Hide new likes
     } @else {
       Show new likes
     }
   </button>
-  <div [ngStyle]="{'display': showLikes ? 'block' : 'none'}" id="observables-event">
+  <div [ngStyle]="{'display': showLikes ? 'block' : 'none'}" id="new-likes-list">
     <mat-chip-set>
       <mat-chip *ngFor="let like of newLikes" class="like-chip">
         <mat-icon class="like-chip-icon">thumb_up</mat-icon>

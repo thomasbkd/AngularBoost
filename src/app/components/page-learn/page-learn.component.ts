@@ -1,7 +1,7 @@
 import {Component, inject, model, OnInit} from '@angular/core';
 import {LikeEvent, OperatorsService} from '../../services/operators.service';
 import {Operator} from '../../models/operator.model';
-import {OperatorComponent} from './operator/operator.component';
+import {OperatorComponent} from '../operator/operator.component';
 import {MatFormField, MatInput, MatLabel, MatSuffix} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatButton, MatIconButton} from '@angular/material/button';
@@ -45,9 +45,6 @@ export class PageLearnComponent implements OnInit {
   ngOnInit() {
     this.operators = this.operatorsService.listAll().sort((_) => { return Math.random() - 0.5; });
     this.search.subscribe(this.updateOperators.bind(this));
-
-    let elem = document.getElementById("observables-event");
-    if (!elem) return
 
     this.likeEvents$.subscribe((event) => {
       this.newLikes.push(event);

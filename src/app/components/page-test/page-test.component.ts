@@ -15,7 +15,9 @@ import {MatButton} from '@angular/material/button';
 import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
-import {QuestionWithoutAnswer} from '../../models/question.model';
+import {AnswerSubmission, QuestionWithoutAnswer} from '../../models/question.model';
+import {NgClass} from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-page-test',
@@ -46,6 +48,7 @@ export class PageTestComponent {
 
   fb = inject(FormBuilder);
   form: FormGroup = this.fb.group({});
+  private snackBar = inject(MatSnackBar);
 
   constructor() {
     this.questions = this.questionsService.getRandomQuestions(5);
@@ -66,7 +69,7 @@ export class PageTestComponent {
 
         case QuestionType.Range:
           group[key] = new FormControl(
-            question.min,
+            null,
             [Validators.required, Validators.min(question.min), Validators.max(question.max)]
           );
           break;
@@ -91,7 +94,39 @@ export class PageTestComponent {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    let submission: AnswerSubmission[] = []
+    let completed = true;
+    this.questions.forEach(question => {
+      if (!completed) return;
+
+      let answer = this.form.controls[`question_${question.id}`];
+      if (answer == null || !answer.valid) {
+        completed = false;
+        return;
+      }
+
+      switch(question.type) {
+        case QuestionType.Radio:
+        case QuestionType.Text:
+        case QuestionType.Range:
+          submission.push({id: question.id, answer: answer.value});
+          break;
+
+        case QuestionType.Check:
+          submission.push({id: question.id, answer: question.options.filter((_, index) => answer.value[index])});
+          break;
+      }
+    })
+
+    if (!completed) {
+      this.snackBar.open("Please answer to each question.", "Close", {
+        duration: 5000,
+        verticalPosition: "top"
+      });
+      return;
+    }
+
+    console.log(submission);
   }
 
   protected readonly QuestionType = QuestionType;

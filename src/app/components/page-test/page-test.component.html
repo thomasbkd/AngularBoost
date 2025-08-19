@@ -28,7 +28,7 @@
           }
 
           @case (QuestionType.Text) {
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" hideRequiredMarker>
               <mat-label>Answer</mat-label>
               <input matInput [formControlName]="questionId" [attr.maxLength]="question.maxLength" required/>
               <mat-hint align="end">{{ form.get(questionId)?.value?.length }} / {{ question.maxLength }}</mat-hint>

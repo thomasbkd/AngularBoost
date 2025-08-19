@@ -44,3 +44,8 @@ export interface RangeQuestion extends BaseQuestion {
   max: number;
   answer: number | null;
 }
+
+export interface AnswerSubmission {
+  id: number;
+  answer: string | string[] | number | undefined | null;
+}

@@ -1,0 +1,45 @@
+#question-card {
+  margin-bottom: 2em;
+}
+
+#question-title {
+  margin-bottom: 0.5em;
+  font-size: medium;
+
+  .question-index {
+    font-weight: lighter;
+    user-select: none;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-radio-group, .question-check {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+mat-slider {
+  width: calc(100% - 1em);
+}
+
+.submit-form {
+  display: flex;
+  justify-content: center;
+
+  button {
+    width: 50%;
+  }
+}
+
+.question-check.ng-dirty.ng-invalid:not(:hover) {
+  ::ng-deep.mdc-checkbox__background {
+    border-color: var(--mdc-outlined-text-field-error-outline-color);
+  }
+  ::ng-deep.mdc-form-field {
+    color: var(--mdc-outlined-text-field-error-outline-color);
+  }
+}

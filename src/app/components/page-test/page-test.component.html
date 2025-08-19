@@ -1,53 +1,12 @@
 <h1>Test your knowledge about <span class="techno-title">RxJS</span>!</h1>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" id="test-form">
-  @for (question of questions; track question.id; let i = $index) {
+  @for (question of questions; track question.id) {
     @let questionId = 'question_' + question.id;
-
-    <mat-card appearance="outlined" class="question-card">
-      <mat-card-header>
-        <mat-card-title class="question-title">{{ question.question }}</mat-card-title>
-      </mat-card-header>
-
-      <mat-card-content>
-        @switch (question.type) {
-          @case (QuestionType.Radio) {
-            <mat-radio-group [formControlName]="questionId" required>
-              @for (option of question.options; track option) {
-                <mat-radio-button [value]="option">{{ option }}</mat-radio-button>
-              }
-            </mat-radio-group>
-          }
-
-          @case (QuestionType.Check) {
-            <div [formArrayName]="questionId" class="question-check">
-              @for (option of question.options; track option) {
-                <mat-checkbox [formControlName]="$index"> {{ option }}</mat-checkbox>
-              }
-            </div>
-          }
-
-          @case (QuestionType.Text) {
-            <mat-form-field appearance="outline" hideRequiredMarker>
-              <mat-label>Answer</mat-label>
-              <input matInput [formControlName]="questionId" [attr.maxLength]="question.maxLength" required/>
-              <mat-hint align="end">{{ form.get(questionId)?.value?.length }} / {{ question.maxLength }}</mat-hint>
-            </mat-form-field>
-          }
-
-          @case (QuestionType.Range) {
-            <mat-slider [min]="question.min" [max]="question.max" [step]="1" showTickMarks discrete>
-              <input matSliderThumb [formControlName]="questionId" required>
-            </mat-slider>
-          }
-        }
-      </mat-card-content>
-    </mat-card>
+    <app-question [index]="$index+1" [question]="question" [control]="form.get(questionId)"></app-question>
   }
 
   <div class="submit-form">
-    <button mat-flat-button class="submit-form" type="submit" [disabled]="form.invalid">
-      Submit
-    </button>
+    <button mat-flat-button class="submit-form" type="submit" [disabled]="form.invalid">Submit</button>
   </div>
 </form>

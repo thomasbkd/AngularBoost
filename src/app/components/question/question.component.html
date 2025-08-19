@@ -1,0 +1,40 @@
+<mat-card appearance="outlined" id="question-card">
+  <mat-card-header>
+    <mat-card-title id="question-title"><span class="question-index">{{ index }}.</span> {{ question.question }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-content>
+      @switch (question.type) {
+        @case (QuestionType.Radio) {
+          <mat-radio-group [formControl]="$any(control)" required>
+            @for (option of question.options; track option) {
+              <mat-radio-button [value]="option">{{ option }}</mat-radio-button>
+            }
+          </mat-radio-group>
+        }
+
+        @case (QuestionType.Check) {
+          <div [formGroup]="$any(control)" class="question-check">
+            @for (option of question.options; track option) {
+              <mat-checkbox [formControl]="getCheckboxControl($index)"> {{ option }}</mat-checkbox>
+            }
+          </div>
+        }
+
+        @case (QuestionType.Text) {
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Answer</mat-label>
+            <input matInput [formControl]="$any(control)" [attr.maxLength]="question.maxLength" required/>
+            <mat-hint align="end">{{ control?.value?.length ?? 0 }} / {{ question.maxLength }}</mat-hint>
+          </mat-form-field>
+        }
+
+        @case (QuestionType.Range) {
+          <mat-slider [min]="question.min" [max]="question.max" [step]="1" showTickMarks discrete>
+            <input matSliderThumb [formControl]="$any(control)" required>
+          </mat-slider>
+        }
+      }
+    </mat-card-content>
+  </mat-card-content>
+</mat-card>

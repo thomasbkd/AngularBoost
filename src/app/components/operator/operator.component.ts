@@ -4,7 +4,6 @@ import {MatChip} from '@angular/material/chips';
 import {AsyncPipe, LowerCasePipe, NgClass} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {OperatorsService} from '../../services/operators.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-operator',
@@ -14,7 +13,6 @@ import {Observable} from 'rxjs';
     NgClass,
     LowerCasePipe,
     MatIcon,
-    AsyncPipe
   ],
   templateUrl: './operator.component.html',
   styleUrl: './operator.component.scss'

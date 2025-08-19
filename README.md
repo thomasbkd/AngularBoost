@@ -14,7 +14,7 @@ Angular project developed to enhance my front-end development skills.
 - [x] Add liking section feature
 - [x] Display total likes in the toolbar
 - [x] Initialize a form on the test page
-- [ ] Add validation to the form
+- [x] Add validation to the form
 - [ ] Create a dedicated page for the test results
 - [ ] Create a *duration* pipe
 - [ ] Unit test the pipe

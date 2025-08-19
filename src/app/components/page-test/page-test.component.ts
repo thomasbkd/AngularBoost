@@ -18,26 +18,15 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/mat
 import {AnswerSubmission, QuestionWithoutAnswer} from '../../models/question.model';
 import {NgClass} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {QuestionComponent} from '../question/question.component';
 
 @Component({
   selector: 'app-page-test',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    MatRadioGroup,
-    MatRadioButton,
-    MatSlider,
     MatButton,
-    MatInput,
-    MatCheckbox,
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardContent,
-    MatSliderThumb,
-    MatFormField,
-    MatLabel,
-    MatHint,
+    QuestionComponent,
   ],
   templateUrl: './page-test.component.html',
   styleUrl: './page-test.component.scss'
@@ -128,6 +117,4 @@ export class PageTestComponent {
 
     console.log(submission);
   }
-
-  protected readonly QuestionType = QuestionType;
 }

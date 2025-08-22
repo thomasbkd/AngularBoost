@@ -1,0 +1,12 @@
+<h1>Congratulations! Here are your results.</h1>
+<h2 id="total-points">Total of points: {{ getPoints() }}/{{correction.length}}</h2>
+
+<form (ngSubmit)="backHome()" id="test-form">
+  @for (question of correction; track question.id) {
+    <app-question [index]="$index+1" [correction]="question" [resultsMode]="true"></app-question>
+  }
+
+  <div class="submit-form">
+    <button mat-flat-button class="submit-form" type="submit">Back to home</button>
+  </div>
+</form>

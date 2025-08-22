@@ -14,7 +14,7 @@ export type QuestionWithoutAnswer =
   | Omit<RangeQuestion, 'answer'>;
 
 
-interface BaseQuestion {
+export interface BaseQuestion {
   id: number;
   question: string;
   type: QuestionType
@@ -35,7 +35,7 @@ export interface CheckQuestion extends BaseQuestion {
 export interface TextQuestion extends BaseQuestion {
   type: QuestionType.Text;
   maxLength: number;
-  answer: string | string[] | null;
+  answer: string[];
 }
 
 export interface RangeQuestion extends BaseQuestion {

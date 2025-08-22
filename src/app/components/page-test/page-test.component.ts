@@ -19,6 +19,7 @@ import {AnswerSubmission, QuestionWithoutAnswer} from '../../models/question.mod
 import {NgClass} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {QuestionComponent} from '../question/question.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-test',
@@ -32,6 +33,7 @@ import {QuestionComponent} from '../question/question.component';
   styleUrl: './page-test.component.scss'
 })
 export class PageTestComponent {
+  router = inject(Router);
   questionsService = inject(QuestionsService);
   questions: QuestionWithoutAnswer[] = [];
 
@@ -115,6 +117,8 @@ export class PageTestComponent {
       return;
     }
 
-    console.log(submission);
+    this.router.navigate(['/results'], {
+      state: {submission: submission}
+    });
   }
 }

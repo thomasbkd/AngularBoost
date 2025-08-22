@@ -1,38 +1,101 @@
 <mat-card appearance="outlined" id="question-card">
   <mat-card-header>
-    <mat-card-title id="question-title"><span class="question-index">{{ index }}.</span> {{ question.question }}</mat-card-title>
+    <mat-card-title id="question-title"><span class="question-index">
+      {{ index }}.</span> {{ question.question }}
+      <span *ngIf="resultsMode" id="icon-result">
+        <mat-icon *ngIf="correction.correct" class="correct">check_circle</mat-icon>
+        <mat-icon *ngIf="!correction.correct" class="wrong">cancel</mat-icon>
+      </span>
+    </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <mat-card-content>
       @switch (question.type) {
         @case (QuestionType.Radio) {
-          <mat-radio-group [formControl]="$any(control)" required>
-            @for (option of question.options; track option) {
-              <mat-radio-button [value]="option">{{ option }}</mat-radio-button>
-            }
-          </mat-radio-group>
+          @if (resultsMode) {
+            <mat-radio-group disabled>
+              @for (option of $any(correction).correction; track option) {
+                <mat-radio-button
+                  [checked]="getResultChecked(option.correct)"
+                  [class]="getResultClass(option.correct)"
+                  [value]="option">
+                  {{ option.value }}
+                </mat-radio-button>
+              }
+            </mat-radio-group>
+          } @else {
+            <mat-radio-group [formControl]="$any(control)" required>
+              @for (option of question.options; track option) {
+                <mat-radio-button [value]="option">{{ option }}</mat-radio-button>
+              }
+            </mat-radio-group>
+          }
         }
 
         @case (QuestionType.Check) {
+          @if (resultsMode) {
+            <div class="question-check">
+              @for (option of $any(correction).correction; track option) {
+                <mat-checkbox
+                  disabled
+                  [checked]="getResultChecked(option.correct)"
+                  [class]="getResultClass(option.correct)">
+                  {{ option.value }}
+                </mat-checkbox>
+              }
+            </div>
+          } @else {
           <div [formGroup]="$any(control)" class="question-check">
             @for (option of question.options; track option) {
               <mat-checkbox [formControl]="getCheckboxControl($index)"> {{ option }}</mat-checkbox>
             }
           </div>
+          }
         }
 
         @case (QuestionType.Text) {
-          <mat-form-field appearance="outline" hideRequiredMarker>
-            <mat-label>Answer</mat-label>
-            <input matInput [formControl]="$any(control)" [attr.maxLength]="question.maxLength" required/>
-            <mat-hint align="end">{{ control?.value?.length ?? 0 }} / {{ question.maxLength }}</mat-hint>
-          </mat-form-field>
+          @if (resultsMode) {
+
+            <div class="text-result">
+              <div class="prefix-answer">Your answer</div>
+              <div class="text-answer">
+                @for (part of getResultTextParts(); track part) {
+                  <span [class]="isPartKeyword(part) ? 'good' : ''">{{ part }}</span>
+                }
+              </div>
+              <div class="text-missing">
+                <span class="prefix-missing">Missing keywords: </span>
+                @for (missing of getMissingKeywords(); track missing) {
+                  <span class="bad">{{ missing }}</span>
+                  @if (!$last) {, }
+                }
+              </div>
+            </div>
+          } @else {
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Answer</mat-label>
+              <input matInput [formControl]="$any(control)" [attr.maxLength]="question.maxLength" required/>
+              <mat-hint align="end">{{ control?.value?.length ?? 0 }} / {{ question.maxLength }}</mat-hint>
+            </mat-form-field>
+          }
         }
 
         @case (QuestionType.Range) {
-          <mat-slider [min]="question.min" [max]="question.max" [step]="1" showTickMarks discrete>
+          @if (resultsMode) {
+            <mat-slider
+              [min]="question.min"
+              [max]="question.max"
+              [step]="1"
+              showTickMarks discrete disabled
+              [class]="$any(question).correct ? 'good':'bad'"
+            >
+              <input matSliderThumb [formControl]="$any(control)" [value]="$any(correction).given" required>
+            </mat-slider>
+          } @else {
+            <mat-slider [min]="question.min" [max]="question.max" [step]="1" showTickMarks discrete>
             <input matSliderThumb [formControl]="$any(control)" required>
           </mat-slider>
+          }
         }
       }
     </mat-card-content>

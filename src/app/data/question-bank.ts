@@ -34,14 +34,14 @@ export const QUESTION_BANK: Question[] = [
     id: 5,
     type: QuestionType.Text,
     question: "Briefly explain what debounceTime does.",
-    maxLength: 100,
+    maxLength: 200,
     answer: ["delay", "wait", "pause"]
   },
   {
     id: 6,
     type: QuestionType.Text,
     question: "What is the purpose of the catchError operator?",
-    maxLength: 100,
+    maxLength: 200,
     answer: ["error", "handle", "fallback"]
   },
   {
@@ -85,21 +85,21 @@ export const QUESTION_BANK: Question[] = [
     id: 12,
     type: QuestionType.Check,
     question: "Which operators are used to transform streams?",
-    options: ["map", "scan", "switchMap", "concatMap"],
-    answer: ["map", "scan", "switchMap", "concatMap"]
+    options: ["map", "scan", "switchMap", "from"],
+    answer: ["map", "scan", "switchMap"]
   },
   {
     id: 13,
     type: QuestionType.Text,
     question: "Describe the role of switchMap in handling HTTP requests.",
-    maxLength: 100,
+    maxLength: 200,
     answer: ["cancel", "latest", "request"]
   },
   {
     id: 14,
     type: QuestionType.Text,
     question: "What does the takeUntil operator do?",
-    maxLength: 100,
+    maxLength: 200,
     answer: ["unsubscribe", "stop", "complete"]
   },
   {
@@ -143,7 +143,7 @@ export const QUESTION_BANK: Question[] = [
     id: 20,
     type: QuestionType.Text,
     question: "Explain the difference between mergeMap and switchMap.",
-    maxLength: 100,
+    maxLength: 200,
     answer: ["parallel", "cancel", "inner"]
   }
 ];

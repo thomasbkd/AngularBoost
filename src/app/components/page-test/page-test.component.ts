@@ -118,7 +118,7 @@ export class PageTestComponent {
     }
 
     this.router.navigate(['/results'], {
-      state: {submission: submission}
+      state: { submission: submission }
     });
   }
 }

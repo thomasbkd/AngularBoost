@@ -48,7 +48,6 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     if (this.resultsMode) this.question = this.correction
-    console.log(this.correction)
   }
 
   getCheckboxControl(index: number): FormControl {

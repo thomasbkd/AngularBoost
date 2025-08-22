@@ -26,13 +26,7 @@ export class PageResultsComponent implements OnInit {
   correction!: Correction[];
 
   ngOnInit() {
-    const state = history.state;
-    if (!state.submission) {
-      this.router.navigate(['/test']);
-      return;
-    }
-
-    this.submission = state.submission;
+    this.submission = history.state.submission;
     this.correction = this.questionsService.getCorrection(this.submission)
   }
 

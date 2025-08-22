@@ -3,6 +3,7 @@ import {PageLearnComponent} from './components/page-learn/page-learn.component';
 import {PageTestComponent} from './components/page-test/page-test.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {PageResultsComponent} from './components/page-results/page-results.component';
+import {resultsGuard} from './guards/results.guard';
 
 export const routes: Routes = [
   {
@@ -15,7 +16,8 @@ export const routes: Routes = [
   },
   {
     path: 'results',
-    component: PageResultsComponent
+    component: PageResultsComponent,
+    canActivate: [resultsGuard],
   },
   {
     path: '',

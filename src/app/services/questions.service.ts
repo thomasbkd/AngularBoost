@@ -16,7 +16,7 @@ export class QuestionsService {
   }
 
   getCorrection(submissions: AnswerSubmission[]): Correction[] {
-    let correction: Correction[] = [];
+    const correction: Correction[] = [];
     submissions.forEach(submission => {
       let question = this.getQuestion(submission.id)
       if (!question) return;

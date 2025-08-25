@@ -1,5 +1,6 @@
 <h1>Congratulations! Here are your results.</h1>
-<h2 id="total-points">Total of points: {{ getPoints() }}/{{correction.length}}</h2>
+<h2 class="total-points">Total of points: {{ getPoints() }}/{{correction.length}}</h2>
+<h2 class="chrono">Test duration: {{ startDate | duration:endDate:"mm [minutes] ss [seconds]"}} </h2>
 
 <form (ngSubmit)="backHome()" id="test-form">
   @for (question of correction; track question.id) {

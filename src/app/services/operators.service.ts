@@ -102,11 +102,12 @@ export class OperatorsService {
     if (jsonOperators) this.operators = JSON.parse(jsonOperators);
 
     const jsonLikeCounts = localStorage.getItem("likeCounts");
-    if (jsonLikeCounts)
+    if (jsonLikeCounts) {
       this.likeCounts = new Map<number, number>(
         Object.entries(JSON.parse(jsonLikeCounts)).map(
           ([id, count]) => [Number(id), Number(count)])
       );
+    }
   }
 
   listAll(): Operator[] {
@@ -142,7 +143,7 @@ export class OperatorsService {
 
   getTotalLike(): number {
     let total = 0;
-     this.likeCounts.forEach((count) => {
+    this.likeCounts.forEach((count) => {
       total += count;
     })
     return total;

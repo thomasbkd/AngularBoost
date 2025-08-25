@@ -16,10 +16,12 @@ import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {AnswerSubmission, QuestionWithoutAnswer} from '../../models/question.model';
-import {NgClass} from '@angular/common';
+import {AsyncPipe, NgClass} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {QuestionComponent} from '../question/question.component';
 import {Router} from '@angular/router';
+import {interval, map} from 'rxjs';
+import {DurationPipe} from '../../pipes/duration.pipe';
 
 @Component({
   selector: 'app-page-test',
@@ -28,18 +30,25 @@ import {Router} from '@angular/router';
     ReactiveFormsModule,
     MatButton,
     QuestionComponent,
+    DurationPipe,
+    AsyncPipe,
   ],
   templateUrl: './page-test.component.html',
   styleUrl: './page-test.component.scss'
 })
 export class PageTestComponent {
   router = inject(Router);
+  fb = inject(FormBuilder);
+  private snackBar = inject(MatSnackBar);
   questionsService = inject(QuestionsService);
+
+  form: FormGroup = this.fb.group({});
   questions: QuestionWithoutAnswer[] = [];
 
-  fb = inject(FormBuilder);
-  form: FormGroup = this.fb.group({});
-  private snackBar = inject(MatSnackBar);
+  startDate = new Date();
+  currentTime$ = interval(1000).pipe(
+    map(_ => new Date()),
+  )
 
   constructor() {
     this.questions = this.questionsService.getRandomQuestions(5);
@@ -118,7 +127,11 @@ export class PageTestComponent {
     }
 
     this.router.navigate(['/results'], {
-      state: { submission: submission }
+      state: {
+        submission: submission,
+        startDate: this.startDate,
+        endDate: new Date(),
+      }
     });
   }
 }

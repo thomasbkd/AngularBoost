@@ -1,4 +1,7 @@
-<h1>Test your knowledge about <span class="techno-title">RxJS</span>!</h1>
+<div class="test-title">
+  <h1>Test your knowledge about <span class="techno-title">RxJS</span>!</h1>
+  <div class="test-chrono">{{ startDate | duration:(currentTime$ | async) }}</div>
+</div>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" id="test-form">
   @for (question of questions; track question.id) {

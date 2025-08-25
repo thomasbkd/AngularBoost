@@ -6,6 +6,8 @@ import {Correction} from '../../models/correction.model';
 import {QuestionComponent} from '../question/question.component';
 import {FormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
+import moment from 'moment';
+import {DurationPipe} from '../../pipes/duration.pipe';
 
 @Component({
   selector: 'app-page-results',
@@ -13,7 +15,8 @@ import {MatButton} from '@angular/material/button';
   imports: [
     QuestionComponent,
     FormsModule,
-    MatButton
+    MatButton,
+    DurationPipe
   ],
   templateUrl: './page-results.component.html',
   styleUrl: './page-results.component.scss'
@@ -21,12 +24,16 @@ import {MatButton} from '@angular/material/button';
 export class PageResultsComponent implements OnInit {
   router = inject(Router)
   questionsService = inject(QuestionsService);
-  submission !: AnswerSubmission[];
 
+  submission !: AnswerSubmission[];
   correction!: Correction[];
+  startDate!: Date;
+  endDate!: Date;
 
   ngOnInit() {
     this.submission = history.state.submission;
+    this.startDate = history.state.startDate;
+    this.endDate = history.state.endDate;
     this.correction = this.questionsService.getCorrection(this.submission)
   }
 

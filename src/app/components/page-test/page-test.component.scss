@@ -1,3 +1,14 @@
+.test-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .test-chrono {
+    font-weight: lighter;
+    font-size: 2em;
+  }
+}
+
 #test-form {
   width: 100%;
 

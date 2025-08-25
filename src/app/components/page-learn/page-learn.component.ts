@@ -36,9 +36,9 @@ export class PageLearnComponent implements OnInit {
   title: string = "RxJS";
   showLikes: boolean = true;
   operatorsService = inject(OperatorsService);
-  likeEvents$ = this.operatorsService.getLikeEvents()
-  operators?: Operator[]
-  newLikes: LikeEvent[] = []
+  likeEvents$ = this.operatorsService.getLikeEvents();
+  operators?: Operator[];
+  newLikes: LikeEvent[] = [];
 
   search = model<string>("");
 
@@ -52,10 +52,10 @@ export class PageLearnComponent implements OnInit {
   }
 
   updateOperators(search: string) {
-    this.operators = this.operatorsService.searchByName(search)
+    this.operators = this.operatorsService.searchByName(search);
   }
 
   addLike(id: number) {
-    this.operatorsService.addLike(id)
+    this.operatorsService.addLike(id);
   }
 }

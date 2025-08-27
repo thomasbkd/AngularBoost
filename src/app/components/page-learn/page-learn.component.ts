@@ -8,6 +8,7 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {DatePipe, NgForOf, NgStyle} from '@angular/common';
 import {MatChip, MatChipSet} from '@angular/material/chips';
+import {TranslateOnSelectDirective} from '../../directives/translate-on-select.directive';
 
 @Component({
   selector: 'app-page-learn',
@@ -26,7 +27,8 @@ import {MatChip, MatChipSet} from '@angular/material/chips';
     MatChip,
     NgForOf,
     DatePipe,
-    MatChipSet
+    MatChipSet,
+    TranslateOnSelectDirective
   ],
   templateUrl: './page-learn.component.html',
   styleUrl: './page-learn.component.scss'

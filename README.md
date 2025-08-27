@@ -18,7 +18,7 @@ Angular project developed to enhance my front-end development skills.
 - [x] Create a dedicated page for the test results
 - [x] Create a *duration* pipe
 - [x] Unit test the pipe
-- [ ] Create a custom directive
+- [x] Create a custom directive
 - [ ] Implement a store with *NgRx*
 - [ ] Add multi-language support
 - [ ] Add accessibility to the website
